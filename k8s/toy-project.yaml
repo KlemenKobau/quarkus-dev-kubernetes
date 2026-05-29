@@ -19,8 +19,6 @@ spec:
           ports:
             - containerPort: 8080
               name: http
-            - containerPort: 5005
-              name: remote-dev
           envFrom:
             - configMapRef:
                 name: toy-project-config
@@ -37,6 +35,3 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-    - name: remote-dev
-      port: 5005
-      targetPort: 5005
