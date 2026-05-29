@@ -1,4 +1,4 @@
-package io.kobauk;
+package io.kobauk.calculator;
 
 import jakarta.enterprise.context.ApplicationScoped;
 

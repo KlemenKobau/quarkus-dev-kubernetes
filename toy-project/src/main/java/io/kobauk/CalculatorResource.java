@@ -1,5 +1,6 @@
 package io.kobauk;
 
+import io.kobauk.calculator.CalculatorService;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;

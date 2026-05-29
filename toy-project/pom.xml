@@ -24,12 +24,7 @@
             <groupId>io.kobauk</groupId>
             <artifactId>calculator-lib</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.quarkiverse.mapstruct</groupId>
-            <artifactId>quarkus-mapstruct</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-        <dependency>
+<dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest-jackson</artifactId>
         </dependency>
