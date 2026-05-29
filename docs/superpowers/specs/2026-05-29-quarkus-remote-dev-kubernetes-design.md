@@ -15,7 +15,7 @@ quarkus-dev-kubernetes/
 │   └── src/main/java/io/kobauk/
 │       └── CalculatorService.java
 ├── toy-project/
-│   ├── pom.xml                      ← updated: parent = root POM, dep on calculator-lib
+│   ├── pom.xml                      ← parent = root POM, dep on calculator-lib
 │   ├── src/main/docker/             ← existing Dockerfiles (unchanged)
 │   └── src/main/java/io/kobauk/
 │       └── CalculatorResource.java  ← replaces TestResource
@@ -51,12 +51,12 @@ public class CalculatorService {
 
 ---
 
-## 3. toy-project Changes
+## 3. toy-project Module
 
-- `pom.xml`: add `<parent>` pointing to root POM; add `<dependency>` on `calculator-lib`
-- `TestResource.java` → deleted; replaced by `CalculatorResource.java`
-- `TestResourceTest.java` → replaced by `CalculatorResourceTest.java`
-- `TestResourceIT.java` → replaced by `CalculatorResourceIT.java`
+- `pom.xml`: parent = root POM; depends on `calculator-lib`
+- `CalculatorResource.java` — main REST resource (replaces `TestResource.java`)
+- `CalculatorResourceTest.java` — unit test (replaces `TestResourceTest.java`)
+- `CalculatorResourceIT.java` — integration test (replaces `TestResourceIT.java`)
 
 **`CalculatorResource.java`:**
 
@@ -153,7 +153,7 @@ The key demo moment: edit `CalculatorService.add()` to return `a + b + 1`, save 
 
 ---
 
-## 6. Build Commands (updated)
+## 6. Build Commands
 
 The Maven wrapper (`mvnw`) lives in `toy-project/`. Run multi-module builds from the repo root using it:
 
