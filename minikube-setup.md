@@ -41,7 +41,7 @@ Build the mutable JAR and Docker image, load it into Minikube, then apply the ma
 ```bash
 # From toy-project/
 cd toy-project
-./mvnw package -Dquarkus.package.jar.type=mutable-jar
+./mvnw package
 docker build -f src/main/docker/Dockerfile.jvm -t toy-project-jvm .
 cd ..
 

@@ -8,7 +8,7 @@ minikube start
 
 echo "==> Building mutable JAR..."
 cd "$SCRIPT_DIR/toy-project"
-./mvnw package -Dquarkus.package.jar.type=mutable-jar -q
+./mvnw install -q
 
 echo "==> Building JVM Docker image..."
 docker build -f src/main/docker/Dockerfile.jvm -t toy-project-jvm . -q
@@ -33,7 +33,6 @@ echo ""
 echo "To start remote dev mode:"
 echo ""
 echo "  cd toy-project && ./mvnw quarkus:remote-dev \\"
-echo "    -Dquarkus.live-reload.url=http://${MINIKUBE_IP}:${NODE_PORT} \\"
-echo "    -Dquarkus.live-reload.password=devpassword"
+echo "    -Dquarkus.live-reload.url=http://${MINIKUBE_IP}:${NODE_PORT}"
 echo ""
 echo "To tear down: minikube delete"

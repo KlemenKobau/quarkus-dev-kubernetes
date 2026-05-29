@@ -90,11 +90,7 @@ COPY --chown=185 target/quarkus-app/lib/ /deployments/lib/
 COPY --chown=185 target/quarkus-app/*.jar /deployments/
 COPY --chown=185 target/quarkus-app/app/ /deployments/app/
 COPY --chown=185 target/quarkus-app/quarkus/ /deployments/quarkus/
-
-# Required for remote dev mode: user 185 must own /deployments so it can create subdirs at runtime
-USER root
-RUN chown -R 185:185 /deployments
-USER 185
+RUN chmod o+rw -R /deployments
 
 EXPOSE 8080
 ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"

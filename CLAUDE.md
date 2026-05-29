@@ -32,8 +32,8 @@ cd toy-project && ./mvnw test -Dtest=CalculatorResourceTest
 # Run all tests (unit + integration via failsafe)
 cd toy-project && ./mvnw verify
 
-# Build mutable JVM JAR (required for remote dev mode)
-cd toy-project && ./mvnw package -Dquarkus.package.jar.type=mutable-jar
+# Build JVM JAR (mutable-jar type is set in application.properties)
+cd toy-project && ./mvnw package
 
 # Build native executable (requires Docker)
 cd toy-project && ./mvnw package -Dnative -Dquarkus.native.container-build=true
