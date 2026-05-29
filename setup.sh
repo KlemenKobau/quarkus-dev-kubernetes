@@ -8,7 +8,7 @@ minikube start
 
 echo "==> Building mutable JAR..."
 cd "$SCRIPT_DIR/toy-project"
-quarkus build -q
+quarkus build
 
 echo "==> Building JVM Docker image..."
 docker build -f src/main/docker/Dockerfile.jvm -t toy-project-jvm . -q
