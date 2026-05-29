@@ -48,7 +48,8 @@ Four Dockerfile variants live in `toy-project/src/main/docker/`:
 - `Dockerfile.native-micro` — minimal native variant
 
 ```bash
-# Build and run JVM image
+# Build and run JVM image (run from toy-project/)
+cd toy-project
 docker build -f src/main/docker/Dockerfile.jvm -t toy-project-jvm .
 docker run -i --rm -p 8080:8080 toy-project-jvm
 ```
@@ -60,4 +61,11 @@ docker run -i --rm -p 8080:8080 toy-project-jvm
 
 ## Kubernetes
 
-Minikube is the target runtime. Start with `minikube start`. No Kubernetes manifests exist yet in this repo.
+Minikube is the target runtime. Start with `minikube start`. Kubernetes manifests live in `k8s/`:
+- `postgres.yaml` — PostgreSQL 17 Deployment + ClusterIP Service
+- `configmap.yaml` — App config and Quarkus remote dev settings
+- `toy-project.yaml` — App Deployment + NodePort Service
+
+```bash
+kubectl apply -f k8s/
+```
