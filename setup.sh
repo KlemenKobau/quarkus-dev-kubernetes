@@ -6,15 +6,15 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "==> Starting Minikube..."
 minikube start
 
-echo "==> Pointing Docker at Minikube's registry..."
-eval "$(minikube docker-env)"
-
 echo "==> Building mutable JAR..."
 cd "$SCRIPT_DIR/toy-project"
 ./mvnw package -Dquarkus.package.jar.type=mutable-jar -q
 
 echo "==> Building JVM Docker image..."
 docker build -f src/main/docker/Dockerfile.jvm -t toy-project-jvm . -q
+
+echo "==> Loading image into Minikube..."
+minikube image load toy-project-jvm
 
 echo "==> Deploying to Minikube..."
 cd "$SCRIPT_DIR"

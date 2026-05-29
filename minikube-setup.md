@@ -34,23 +34,9 @@ Verify it is running:
 minikube status
 ```
 
-## Point Docker at Minikube's Registry
-
-Before building the app image, point your local Docker daemon at Minikube's internal registry so the image is available to the cluster:
-
-```bash
-eval $(minikube docker-env)
-```
-
-To revert back to your host Docker daemon:
-
-```bash
-eval $(minikube docker-env -u)
-```
-
 ## Deploy the Application
 
-Build the mutable JAR and Docker image, then apply the manifests:
+Build the mutable JAR and Docker image, load it into Minikube, then apply the manifests:
 
 ```bash
 # From toy-project/
@@ -58,6 +44,8 @@ cd toy-project
 ./mvnw package -Dquarkus.package.jar.type=mutable-jar
 docker build -f src/main/docker/Dockerfile.jvm -t toy-project-jvm .
 cd ..
+
+minikube image load toy-project-jvm
 
 # Deploy PostgreSQL, ConfigMap, and the app
 kubectl apply -f k8s/
