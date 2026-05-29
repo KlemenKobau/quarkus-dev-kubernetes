@@ -91,9 +91,9 @@ COPY --chown=185 target/quarkus-app/*.jar /deployments/
 COPY --chown=185 target/quarkus-app/app/ /deployments/app/
 COPY --chown=185 target/quarkus-app/quarkus/ /deployments/quarkus/
 
-# Required for remote dev mode: the live-reload agent overwrites files in /deployments at runtime
+# Required for remote dev mode: the live-reload agent creates /deployments/dev/ and overwrites files at runtime
 USER root
-RUN chmod -R o+rw /deployments
+RUN chmod -R o+rw /deployments && mkdir -p /deployments/dev && chmod -R o+rw /deployments/dev
 USER 185
 
 EXPOSE 8080
