@@ -81,6 +81,5 @@ Once connected, any change to `calculator-lib` or `toy-project` source is compil
 ## Teardown
 
 ```bash
-kubectl delete -f k8s/
-eval $(minikube docker-env -u)
+minikube delete
 ```
