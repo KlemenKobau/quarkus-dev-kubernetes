@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: toy-project-config
+data:
+  QUARKUS_DATASOURCE_JDBC_URL: "jdbc:postgresql://postgres:5432/devdb"
+  QUARKUS_DATASOURCE_USERNAME: "devuser"
+  QUARKUS_DATASOURCE_PASSWORD: "devpassword"
+  QUARKUS_LAUNCH_DEVMODE: "true"
+  QUARKUS_DEVMODE_PASSWORD: "devpassword"
+  QUARKUS_PACKAGE_JAR_TYPE: "mutable-jar"

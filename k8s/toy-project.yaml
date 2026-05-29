@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toy-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: toy-project
+  template:
+    metadata:
+      labels:
+        app: toy-project
+    spec:
+      containers:
+        - name: toy-project
+          image: toy-project-jvm
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+              name: http
+            - containerPort: 5005
+              name: remote-dev
+          envFrom:
+            - configMapRef:
+                name: toy-project-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: toy-project
+spec:
+  type: NodePort
+  selector:
+    app: toy-project
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+    - name: remote-dev
+      port: 5005
+      targetPort: 5005
