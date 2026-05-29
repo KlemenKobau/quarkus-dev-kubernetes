@@ -23,7 +23,6 @@
         <dependency>
             <groupId>io.kobauk</groupId>
             <artifactId>calculator-lib</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>io.quarkiverse.mapstruct</groupId>
