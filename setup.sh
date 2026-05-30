@@ -1,23 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
 echo "==> Starting Minikube..."
 minikube start
 
 echo "==> Building mutable JAR..."
-cd "$SCRIPT_DIR/toy-project"
 quarkus build
 
 echo "==> Building JVM Docker image..."
+cd toy-project
 docker build -f src/main/docker/Dockerfile.jvm -t toy-project-jvm . -q
+cd ..
 
 echo "==> Loading image into Minikube..."
 minikube image load toy-project-jvm
 
 echo "==> Deploying to Minikube..."
-cd "$SCRIPT_DIR"
 kubectl apply -f k8s/
 kubectl rollout status deployment/postgres
 kubectl rollout status deployment/toy-project
