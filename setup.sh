@@ -9,7 +9,7 @@ quarkus build
 
 echo "==> Building JVM Docker image..."
 cd toy-project
-docker build -f src/main/docker/Dockerfile.jvm -t toy-project-jvm . -q
+docker build -f src/main/docker/Dockerfile.jvm -t toy-project-jvm .
 cd ..
 
 echo "==> Loading image into Minikube..."
